@@ -1,58 +1,25 @@
-const { DataTypes } = require('sequelize');
-const { connection } = require('../../database/db.index')
+const {DataTypes} = require('sequelize');
+const {connection} = require('../../database/db.index')
 
-const Routine = connection.define(
+const Routine = connection.define (
     'routine',
-    {
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true
-            }
-        },
-        password: {
-            type:DataTypes.STRING,
-            allowNull: false
-        },
-        role: {
-            type: DataTypes.ENUM('user', 'admin'),
-            defaultValue: 'user'
-        },
-        birthday: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        sex: {
-            type: DataTypes.CHAR,
-            allowNull: false
-        },
-        height: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        weight: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        availability: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        goal: {
-            type: DataTypes.CHAR,
-            allowNull: false
-        },
-        basal: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
-    },
+{
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  intensity: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  description: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+},
+{
+    timestamps: false,
+}
 );
 
-module.exports = User
+module.exports = Routine;

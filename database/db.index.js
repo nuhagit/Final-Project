@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 
+
 const connection = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
@@ -7,7 +8,7 @@ const connection = new Sequelize(
     {
         host: process.env.DB_HOST,
         dialect: process.env.DB_DIALECT,
-        logging: false
+        logging: true
     }
   );
 
@@ -22,7 +23,18 @@ const checkDB = async() => {
 
 }
 
+const synchModels = async () => {
+  try {
+    await connection.sync({ force: true })
+    console.log('Models synched')
+  } catch (error) {
+    console.error('error')
+  }
+}
+
 module.exports = {
     connection,
-    checkDB
+    checkDB,
+    synchModels
 }
+

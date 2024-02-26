@@ -1,7 +1,12 @@
 require('dotenv').config();
 
 const {
-    checkDB
-} = require('./database/db.index')
+    checkDB,
+    synchModels
+} = require('./database/db.index.js')
 
-checkDB()
+
+;(async () => {
+    await checkDB()
+    await synchModels()
+}) ()
