@@ -29,7 +29,7 @@ const User = connection.define(
             allowNull: false
         },
         sex: {
-            type: DataTypes.CHAR,
+            type: DataTypes.STRING,
             allowNull: false
         },
         height: {
@@ -45,7 +45,7 @@ const User = connection.define(
             allowNull: false
         },
         goal: {
-            type: DataTypes.CHAR,
+            type: DataTypes.STRING,
             allowNull: false
         },
         basal: {
