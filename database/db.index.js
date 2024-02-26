@@ -1,6 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 
+
 const connection = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
@@ -31,6 +32,8 @@ const synchModels = async () => {
     console.error('error')
   }
 }
+
+
 
 module.exports = {
     connection,

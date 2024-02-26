@@ -5,8 +5,10 @@ const {
     synchModels
 } = require('./database/db.index.js')
 
+const addRelations = require('./database/relations.js')
 
 ;(async () => {
     await checkDB()
-    await synchModels()
-}) ()
+    synchModels()
+    addRelations()
+})()

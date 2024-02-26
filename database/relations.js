@@ -6,8 +6,12 @@ const Exercise = require('../api/models/exercise.model')
 const addRelations = () => {
     User.hasOne(Training)
     Training.belongsTo(User)
-
-    Routine.belongsToMany(Training, { through: 'routine_training' })
+    Routine.belongsToMany(Training, {through: 'training_routine'})
+    Exercise.belongsToMany(Routine, {through: 'routine_exercise'})
+   
     
-    Exercise.belongsToMany(Routine, { through: 'exercise_routine' })
+    
+
 }
+
+module.exports = addRelations
