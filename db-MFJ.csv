@@ -1,0 +1,54 @@
+Table users {
+      id integer [primary key]
+      username varchar
+      email varchar
+      password varchar
+      birthday date
+      sex varchar
+      height integer
+      weight integer
+      availability integer
+      goal varchar
+      calories integer
+    }
+
+    Table training {
+      id integer [primary key]
+      name varchar
+      goal varchar 
+      users_id integer
+    }
+
+    Table routine_training {
+    id integer [primary key]
+    training_id integer
+    routine_id integer
+    }
+
+    Table routine {
+      id integer [primary key]
+      name varchar
+      intensity varchar
+      description varchar
+    }
+
+    Table exercise_routine {
+    id integer [primary key]
+    routine_id integer
+    exercise_id integer
+    }
+
+    Table exercise {
+      id integer [primary key]
+      name varchar
+      intensity varchar
+      series integer
+      repetitions integer
+      description text [note: 'Content of the post']
+    }
+
+    Ref: training.users_id < users.id
+    Ref: routine_training.training_id < training.id
+    Ref: routine_training.routine_id < routine.id
+    Ref: exercise_routine.routine_id < routine.id
+    Ref: exercise_routine.exercise_id < exercise.id
