@@ -17,17 +17,22 @@ const connectToDB = async () => {
 }
 
 const startExpress = () => { 
+try {
+const mainRouter = require('./router/router.index.js')
 const app = express ()
+
 app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
 
-app.get('/api', (req,res) => {
-res.send('request received')
-})
+app.use('/api', mainRouter )
+
 app.listen(process.env.PORT, () => {
     console.log(`Express started. Listening ${process.env.PORT}`)
 })
+} catch(error) {
+    throw new Error (error)
+}
 }
 ;(async () => {
     await connectToDB()

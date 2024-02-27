@@ -4,12 +4,7 @@ const {connection} = require('../../database/db.index')
 const User = connection.define(
  'user',
  {
-   users_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    unique: true,
-    primaryKey: true
-   },
+ 
    username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -48,11 +43,11 @@ const User = connection.define(
    },
    availability: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: true
    },
    goal: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
    },
    basal: {
     type: DataTypes.INTEGER,
