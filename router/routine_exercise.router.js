@@ -1,7 +1,7 @@
-const routine_exerciseRouter = require('express').Router()
+const routineExerciseRouter = require('express').Router()
 
-const { createRoutine_Exercise } = require('.././api/controllers/routine_exercise.controller')
+const { createRoutineExercise } = require('.././api/controllers/routine_exercise.controller')
 
-routine_exerciseRouter.post('/', createRoutine_Exercise)
+routineExerciseRouter.post('/', createRoutineExercise)
 
-module.exports = routine_exerciseRouter;
+module.exports = routineExerciseRouter;

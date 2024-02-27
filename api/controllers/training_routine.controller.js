@@ -1,12 +1,12 @@
-const Training_Routine = require('../models/training_routine.model')
+const TrainingRoutine = require('../models/training_routine.model')
 
-const createTraining_Routine = async (req, res) => {
+const createTrainingRoutine = async (req, res) => {
     try {
-        const training_routine = await Training_Routine.create(req.body)
+        const trainingRoutine = await TrainingRoutine.create(req.body)
         res.status(200).json(
             {
             message: 'Relation between Training and Routine created.',
-            result: training_routine
+            result: trainingRoutine
             }
         )
     } catch (error) {
@@ -19,4 +19,4 @@ const createTraining_Routine = async (req, res) => {
     }
 }
 
-module.exports = { createTraining_Routine }
+module.exports = { createTrainingRoutine }
