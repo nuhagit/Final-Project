@@ -9,7 +9,7 @@ const Training = connection.define (
     allowNull: false
   },
   goal: {
-    tyoe: DataTypes.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   users_id: {

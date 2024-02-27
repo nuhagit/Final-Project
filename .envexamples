@@ -1,6 +1,6 @@
-DB_PORT = 0000
 DB_NAME = DatabaseName
 DB_USER = reboot
 DB_PASS = reboot
 DB_HOST = localhost
 DB_DIALECT = MyQSL
+PORT = 0000
