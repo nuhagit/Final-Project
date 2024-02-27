@@ -32,6 +32,7 @@ async function signup(req,res) {
 }
 
 async function login(req, res) {
+  console.log(req)
     try {
       const user = await User.findOne({
         where: {
@@ -44,18 +45,24 @@ async function login(req, res) {
           const comparePass = bcrypt.compareSync(req.body.password, user.password)
           
           if (comparePass) {
-        const payload = { email: user.email, userName: user.userName }
-        const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '1h' })
-        return res.status(200).json({ token })
+        const token = jwt.sign({email: user.email}, process.env.JWT_SECRET, { expiresIn: '1h' })
+        return res.status(200).json({ 
+          message: 'Login succesful', 
+          result: token,
+        });
       } else {
          return res.status(404).json('Error: Email or Password incorrect')
       }
     } catch (error) {
-      return res.status(500).send(error.message)
+      return res.status(500).json({
+        message: 'login error',
+        result: error
+      })
     }
   }
    
 
 module.exports = {
-    signup
+    signup,
+    login
 }
