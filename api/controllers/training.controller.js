@@ -19,6 +19,4 @@ const createTraining = async (req, res) => {
     }
 }
 
-module.exports = {
-    createTraining
-}
+module.exports = { createTraining }

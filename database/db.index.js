@@ -33,8 +33,6 @@ const synchModels = async () => {
   }
 }
 
-
-
 module.exports = {
     connection,
     checkDB,

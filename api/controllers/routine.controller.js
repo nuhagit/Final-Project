@@ -19,6 +19,4 @@ const createRoutine = async (req, res) => {
     }
 }
 
-module.exports = {
-    createRoutine
-}
+module.exports = { createRoutine }
