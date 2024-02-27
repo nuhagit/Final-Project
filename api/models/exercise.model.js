@@ -8,10 +8,7 @@ const Exercise = connection.define(
             type: DataTypes.STRING,
             allowNull: false
         },
-        intensity: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
+    
         series: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -25,6 +22,9 @@ const Exercise = connection.define(
             allowNull: false
         }
     },
+    {
+        timestamps: false,
+    }
 );
 
 module.exports = Exercise
