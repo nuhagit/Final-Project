@@ -11,11 +11,6 @@ const Training = connection.define (
   goal: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  users_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    unique: true
   }, 
 },
 {
