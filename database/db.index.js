@@ -1,7 +1,5 @@
 const { Sequelize } = require('sequelize');
 
-
-
 const connection = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
@@ -14,20 +12,18 @@ const connection = new Sequelize(
   );
 
 const checkDB = async() => {
-
     try {
       await connection.authenticate();
       console.log('Connected to database');
     } catch (error) {
       console.error('Unable to connect to the database:', error);
     }
-
 }
 
-const synchModels = async () => {
+const syncModels = async () => {
   try {
     await connection.sync({ force: true })
-    console.log('Models synched')
+    console.log('Models synced')
   } catch (error) {
     console.error('error')
   }
@@ -36,6 +32,5 @@ const synchModels = async () => {
 module.exports = {
     connection,
     checkDB,
-    synchModels
+    syncModels
 }
-
