@@ -15,6 +15,7 @@ const checkAuth = (req, res, next) => {
             if (!user) return res.status(401).send('Token not valid')
 
             res.locals.user = user
+            next()
         }
     )
 }
