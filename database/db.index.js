@@ -24,10 +24,10 @@ const checkDB = async() => {
 
 }
 
-const synchModels = async () => {
+const syncModels = async () => {
   try {
     await connection.sync({})
-    console.log('Models synched')
+    console.log('Models synced')
   } catch (error) {
     console.error('error')
   }
@@ -38,6 +38,6 @@ const synchModels = async () => {
 module.exports = {
     connection,
     checkDB,
-    synchModels
+    syncModels
 }
 

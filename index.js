@@ -6,7 +6,7 @@ const cors = require('cors')
 
 const {
     checkDB,
-    synchModels
+    syncModels
 } = require('./database/db.index.js')
 
 const addRelations = require('./database/relations.js')
@@ -14,7 +14,7 @@ const addRelations = require('./database/relations.js')
 const connectToDB = async () => {
     await checkDB()
     addRelations()
-    await synchModels()
+    await syncModels()
 }
 
 const startExpress = () => { 
