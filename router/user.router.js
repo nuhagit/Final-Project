@@ -1,10 +1,18 @@
 const userRouter = require('express').Router()
 
 const {
-    createUser
+    createUser, getAllUsers, getUserById, updateUser
 }
     = require('.././api/controllers/user.controller')
 
-userRouter.post('/', createUser)
+    const {
+        checkAuth,
+        checkAdmin
+    } = require('../api/utils/middelwares')
+
+    userRouter.get('/', checkAuth, getAllUsers)
+    userRouter.get('/:id', checkAuth, getUserById)
+    userRouter.post('/', checkAuth, checkAdmin, createUser)
+    userRouter.put('/:id', checkAuth, checkAdmin, updateUser)
 
 module.exports = userRouter;
