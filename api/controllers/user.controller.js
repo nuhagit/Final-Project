@@ -5,7 +5,7 @@ const createUser = async (req, res) => {
     try {
         const salt = bcrypt.genSaltSync(parseInt(process.env.SALT_ROUNDS));
         const hash = bcrypt.hashSync(req.body.password, salt);
-        console.log('hola')
+      
 
     req.body.password = hash
     const user = await User.create(req.body)
@@ -91,9 +91,36 @@ const updateUser = async (req, res) => {
     }
 }
 
+const deleteUser = async (req, res) => {
+    try {
+        const result = await User.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+
+        if (!user) return res.status(404).send('User not found')
+
+        res.status(200).json(
+            {
+                message: 'User deleted',
+                result: user
+            }
+        )
+    } catch (error) {
+        res.status(500).json(
+            {
+                message: 'Error deleting user',
+                result: error
+            }
+        )
+    }
+}
+
 module.exports = {
     createUser,
     getAllUsers,
     getUserById,
-    updateUser
+    updateUser,
+    deleteUser
 }
