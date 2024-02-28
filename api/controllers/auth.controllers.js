@@ -1,5 +1,4 @@
 const User = require('../models/user.model')
-
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
@@ -7,14 +6,11 @@ async function signup(req,res) {
     try {
         const salt = bcrypt.genSaltSync(parseInt(process.env.SALT_ROUNDS));
         const hash = bcrypt.hashSync(req.body.password, salt);
-
-        req.body.password = hash
-
-       
-        const user = await User.create(req.body)
         
+        req.body.password = hash
+        
+        const user = await User.create(req.body)
         const token = jwt.sign({email: user.email}, process.env.JWT_SECRET, {expiresIn: '1h'})
-
 
         return res
         .status(200)

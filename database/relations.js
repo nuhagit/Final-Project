@@ -1,6 +1,8 @@
 const User = require('../api/models/user.model')
 const Training = require('../api/models/training.model')
+const RoutineExercise = require('../api/models/routine_exercise.model')
 const Routine = require('../api/models/routine.model')
+const TrainingRoutine = require('../api/models/training_routine.model')
 const Exercise = require('../api/models/exercise.model')
 
 const addRelations = () => {
@@ -9,9 +11,5 @@ const addRelations = () => {
     Routine.belongsToMany(Training, {through: 'training_routine'})
     Exercise.belongsToMany(Routine, {through: 'routine_exercise'})
 }
-   
-    
-    
-
 
 module.exports = addRelations

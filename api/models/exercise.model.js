@@ -22,9 +22,7 @@ const Exercise = connection.define(
             allowNull: false
         }
     },
-    {
-        timestamps: false,
-    }
+    { timestamps: false, }
 );
 
 module.exports = Exercise
