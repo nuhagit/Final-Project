@@ -12,15 +12,8 @@ const Training = connection.define (
     type: DataTypes.STRING,
     allowNull: false
   },
-  // users_id: {
-  //   type: DataTypes.INTEGER,
-  //   allowNull: false,
-  //   unique: true
-  // }, 
 },
-{
-    timestamps: false,
-}
+{ timestamps: false, }
 );
 
 module.exports = Training;
