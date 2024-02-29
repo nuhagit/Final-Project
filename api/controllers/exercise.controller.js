@@ -101,7 +101,7 @@ const deleteExercise = async (req, res) => {
             }
         )
     } catch (error) {
-        res.status(500).json(
+       return res.status(500).json(
             {
                 message: 'Error deleting Routine',
                 result: error

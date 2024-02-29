@@ -94,7 +94,7 @@ const deleteTraining = async (req, res) => {
 
         if (!training) return res.status(404).send('Training not found')
 
-        res.status(200).json(
+        return res.status(200).json(
             {
                 message: 'Training deleted',
                 result: training
