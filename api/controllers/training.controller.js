@@ -60,6 +60,8 @@ const getTrainingById = async (req, res) => {
 }
 
 
+
+
 const updateTraining = async (req, res) => {
     try {
         const result = await Training.update(req.body, {

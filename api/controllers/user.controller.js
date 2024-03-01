@@ -26,6 +26,7 @@ const createUser = async (req, res) => {
     }
 }
 
+
 const getAllUsers = async (req, res) => {
     try {
         const user = await User.findAll()
@@ -65,7 +66,26 @@ const getUserById = async (req, res) => {
         )
     }
 }
+/* 
+const getUserTraining = async (req, res) => {
+    try {
+        const user = await User.findByPk(1, {
+            include: { model: Tool, as: 'trainings' },
+        });
 
+        return res.status(200).json({
+            message: `Getting user with id ${1}`,
+            result: user,
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            message: 'Internal Server Error',
+            error: error.message,
+        });
+    }
+};
+ */
 
 const updateUser = async (req, res) => {
     try {
@@ -124,5 +144,6 @@ module.exports = {
     getAllUsers,
     getUserById,
     updateUser,
-    deleteUser
+    deleteUser,
+   
 }
