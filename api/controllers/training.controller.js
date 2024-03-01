@@ -1,3 +1,4 @@
+const Routine = require('../models/routine.model')
 const Training = require('../models/training.model')
 
 const createTraining = async (req, res) => {
@@ -39,6 +40,20 @@ const getAllTraining = async (req, res) => {
     }
 }
 
+/* const getTrainingByUserId = async (req,res) => { 
+    try { 
+        console.log(req.body)
+        const training = await Training.findOne({ where: { userId: `${req.body }` }});
+        console.log(training)
+        return res.status(200).send(training)
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+    
+    } */
+
 const getTrainingById = async (req, res) => {
     try {
         const training = await Training.findByPk(req.params.id)
@@ -59,6 +74,23 @@ const getTrainingById = async (req, res) => {
     }
 }
 
+
+
+const getTrainingRoutines = async (req, res) => {
+    try {
+        const training = await Training.findOne({ 
+            where: { id: req.params.id}, 
+            include: [
+                { model: Routine}                
+            ]})
+
+          //  console.log(training)
+            return res.status(200).send(training)
+    } catch (error) {
+        console.log(error)
+         return error
+    }
+}
 
 
 
@@ -117,6 +149,7 @@ module.exports = {
     getAllTraining,
     getTrainingById,
     updateTraining,
-    deleteTraining
+    deleteTraining,
+    getTrainingRoutines
 }
 

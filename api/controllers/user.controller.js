@@ -1,3 +1,5 @@
+const Routine = require('../models/routine.model');
+const Training = require('../models/training.model');
 const User = require('../models/user.model')
 const bcrypt = require('bcrypt')
 
@@ -51,7 +53,7 @@ const getUserById = async (req, res) => {
     try {
         const user = await User.findByPk(req.params.id)
 
-        res.status(200).json(
+        return res.status(200).json(
             {
                 message: `Getting user with id ${req.params.id}`,
                 result: user
@@ -66,8 +68,23 @@ const getUserById = async (req, res) => {
         )
     }
 }
-/* 
+
 const getUserTraining = async (req, res) => {
+    try {
+        const user = await User.findOne({ 
+            where: { id: req.params.id}, 
+            include: [
+                { model: Training}                
+            ]})
+
+            console.log(user)
+            return res.status(200).send(user)
+    } catch (error) {
+        
+    }
+}
+
+/* const getUserTraining = async (req, res) => {
     try {
         const user = await User.findByPk(1, {
             include: { model: Tool, as: 'trainings' },
@@ -84,8 +101,8 @@ const getUserTraining = async (req, res) => {
             error: error.message,
         });
     }
-};
- */
+}; */
+
 
 const updateUser = async (req, res) => {
     try {
@@ -145,5 +162,6 @@ module.exports = {
     getUserById,
     updateUser,
     deleteUser,
+    getUserTraining
    
 }

@@ -7,7 +7,9 @@ const addRelations = () => {
     User.hasOne(Training)
     Training.hasMany(User)
     Routine.belongsToMany(Training, {through: 'training_routine'})
+    Training.belongsToMany(Routine, {through: 'training_routine'})
     Exercise.belongsToMany(Routine, {through: 'routine_exercise'})
+    Routine.belongsToMany(Exercise, {through: 'routine_exercise'})
 }
    
     

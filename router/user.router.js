@@ -1,7 +1,7 @@
 const userRouter = require('express').Router()
 
 const {
-    createUser, getAllUsers, getUserById, updateUser, deleteUser, 
+    createUser, getAllUsers, getUserById, updateUser, deleteUser, getUserTraining 
 }
     = require('.././api/controllers/user.controller')
 
@@ -11,7 +11,7 @@ const {
     } = require('../api/utils/middelwares')
 
     userRouter.get('/', checkAuth, getAllUsers)
-    // userRouter.get('/:1', checkAdmin, getUserTraining)
+    userRouter.get('/training/:id', getUserTraining)
     userRouter.get('/:id', checkAuth, getUserById)
     userRouter.post('/', checkAuth, checkAdmin, createUser)
     userRouter.put('/:id', checkAuth, checkAdmin, updateUser)

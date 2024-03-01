@@ -39,6 +39,7 @@ const getAllRoutine = async (req, res) => {
     }
 }
 
+
 const getRoutineById = async (req, res) => {
     try {
         const routine = await Routine.findByPk(req.params.id)

@@ -48,7 +48,9 @@ async function login(req, res) {
         const token = jwt.sign({email: user.email}, process.env.JWT_SECRET, { expiresIn: '1h' })
         return res.status(200).json({ 
           message: 'Login succesful', 
-          result: token,
+         token: token,
+          user: user,
+          
         });
       } else {
          return res.status(404).json('Error: Email or Password incorrect')
