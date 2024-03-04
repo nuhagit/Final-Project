@@ -4,6 +4,7 @@ const { createRoutine,
     getAllRoutine,
     getRoutineById,
     updateRoutine, 
+    getRoutineExercises,
     deleteRoutine} = require('.././api/controllers/routine.controller')
     const {
         checkAuth,
@@ -12,6 +13,7 @@ const { createRoutine,
 
 routineRouter.get('/', checkAuth, getAllRoutine)
 routineRouter.get('/:id', checkAuth, getRoutineById)
+routineRouter.get('/exercises/:id', getRoutineExercises)
 routineRouter.post('/', checkAuth, checkAdmin, createRoutine)
 routineRouter.put('/:id', checkAuth, checkAdmin, updateRoutine)
 routineRouter.delete('/:id', checkAuth, checkAdmin, deleteRoutine)

@@ -1,3 +1,4 @@
+const Exercise = require('../models/exercise.model')
 const Routine = require('../models/routine.model')
 
 const createRoutine = async (req, res) => {
@@ -38,7 +39,21 @@ const getAllRoutine = async (req, res) => {
         )
     }
 }
+const getRoutineExercises = async (req, res) => {
+    try {
+        const routine = await Routine.findOne({ 
+            where: { id: req.params.id}, 
+            include: [
+                { model: Exercise}                
+            ]})
 
+          //  console.log(training)
+            return res.status(200).send(routine)
+    } catch (error) {
+        console.log(error)
+         return error
+    }
+}
 
 const getRoutineById = async (req, res) => {
     try {
@@ -116,6 +131,7 @@ module.exports = {
     getAllRoutine,
     getRoutineById,
     updateRoutine,
-    deleteRoutine
+    deleteRoutine,
+    getRoutineExercises
 }
 
