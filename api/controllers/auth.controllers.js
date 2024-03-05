@@ -20,7 +20,9 @@ async function signup(req,res) {
         .status(200)
         .json({
             message:"User created",
-           result: token
+           result: token,
+           user: user
+
          });
     } catch (error) {
         console.log(error)
